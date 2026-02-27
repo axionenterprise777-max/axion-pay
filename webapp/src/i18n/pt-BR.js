@@ -1,0 +1,70 @@
+const dict = {
+  app: {
+    brand: 'AxionPAY',
+    subtitle: 'Sistema operacional de pagamentos',
+    skipToContent: 'Ir para o conteúdo',
+  },
+  header: {
+    docs: 'Documentação',
+    login: 'Entrar',
+    signup: 'Criar conta',
+    sandbox: 'Criar sandbox',
+    openMenu: 'Abrir menu',
+    closeMenu: 'Fechar menu',
+    menuLabel: 'Menu completo AxionPAY',
+    black: 'Black',
+    white: 'White',
+  },
+  home: {
+    eyebrow: 'Plataforma AxionPAY',
+    title: 'Receba com previsibilidade em PIX, cartão e recorrência.',
+    subtitle:
+      'AxionPAY unifica gateway, checkout e operação financeira para reduzir abandono e acelerar liquidação.',
+    ctaPrimary: 'Começar grátis',
+    ctaSecondary: 'Ver documentação',
+    ctaTertiary: 'Falar no WhatsApp',
+    stats: [
+      { value: '99,99%', label: 'Meta de disponibilidade' },
+      { value: '24/7', label: 'Monitoramento de transações' },
+      { value: 'T+0/T+1', label: 'Opções de liquidação' },
+      { value: '1 stack', label: 'Checkout + operação financeira' },
+    ],
+    sectionTitle: 'Capacidades para operar pagamentos com clareza e escala',
+  },
+  auth: {
+    loginTitle: 'Entrar no AxionPAY',
+    signupTitle: 'Criar conta AxionPAY',
+    loginSuccess: 'Login confirmado. Redirecionando para o dashboard...',
+    loginError: 'Não foi possível entrar.',
+    signupSuccess: 'Sandbox criada! Sua chave de API:',
+    signupError: 'Não foi possível criar sua sandbox.',
+    goDashboard: 'Acessar dashboard',
+    copy: 'Copiar',
+    copied: 'Copiado',
+  },
+  docs: {
+    title: 'Documentação AxionPAY',
+    subtitle:
+      'Guia oficial em PT-BR para integrar pagamentos, webhooks, pay-tags e operação de risco sem retrabalho.',
+    copyBaseUrl: 'Copiar base URL',
+    openApi: 'Abrir API',
+    rateLimitTitle: 'Limite de requisições',
+    sandboxTitle: 'Sandbox rapida',
+    sandboxText: 'Crie sua conta, gere chave e valide endpoints em minutos.',
+  },
+  dashboard: {
+    title: 'Dashboard AxionPAY',
+    loading: 'Carregando dados do dashboard...',
+    empty: 'Nenhum dado encontrado para este workspace.',
+    error: 'Falha ao carregar dados do dashboard.',
+    retry: 'Tentar novamente',
+    logout: 'Sair',
+    navOverview: 'Visão geral',
+    navPayTags: 'Pay-tags',
+    navProducts: 'Produtos',
+    navTokens: 'Tokens API',
+    navSupport: 'Suporte',
+  },
+}
+
+export default dict

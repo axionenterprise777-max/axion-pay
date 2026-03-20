@@ -1,4 +1,4 @@
-﻿import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { NavLink, Route, Routes, useLocation } from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import Support from './pages/Support'
@@ -103,7 +103,7 @@ export default function App() {
                   ×
                 </button>
               </header>
-              <p className="menuPanelLabel">Navegação principal</p>
+              <p className="menuPanelLabel">Navegacao principal</p>
 
               <div className="menuLinks">
                 {MENU_LINKS.map((link) => (
@@ -188,4 +188,3 @@ export default function App() {
     </div>
   )
 }
-

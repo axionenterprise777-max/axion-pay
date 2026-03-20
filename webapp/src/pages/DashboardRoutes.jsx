@@ -1,4 +1,4 @@
-
+﻿
 import { useEffect, useMemo, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { API_BASE_URL, buildApiHeaders } from '../utils/api.js'
@@ -6,7 +6,7 @@ import { t } from '../i18n'
 import './styles/DashboardRoutes.css'
 
 const NAV_ITEMS = [
-  { id: 'overview', label: 'Visão geral', hint: 'Resumo da operação', icon: 'home' },
+  { id: 'overview', label: 'Visao geral', hint: 'Resumo da operacao', icon: 'home' },
   { id: 'analytics', label: 'Analiticos', hint: 'Volume, metodos e tendencia', icon: 'chart' },
   { id: 'actions', label: 'Acoes', hint: 'Atalhos operacionais', icon: 'bolt' },
   { id: 'payouts', label: 'Saques e PIX', hint: 'Saldo, chave e historico', icon: 'wallet' },
@@ -620,7 +620,7 @@ export default function DashboardRoutes() {
               <input value={payoutForm.amount} onChange={(event) => setPayoutForm((prev) => ({ ...prev, amount: event.target.value }))} placeholder="Valor" type="number" min="0" step="0.01" required />
               <select value={payoutForm.method} onChange={(event) => setPayoutForm((prev) => ({ ...prev, method: event.target.value }))}>
                 <option value="pix">PIX</option>
-                <option value="card">Cartão</option>
+                <option value="card">Cartao</option>
               </select>
             </div>
             <textarea rows={2} value={payoutForm.notes} onChange={(event) => setPayoutForm((prev) => ({ ...prev, notes: event.target.value }))} placeholder="Observacoes" />
@@ -712,14 +712,14 @@ export default function DashboardRoutes() {
           <article className={`checkoutPreview ${checkoutProForm.surfaceTone || 'glass'}`} style={{ '--checkout-primary': checkoutProForm.primaryColor, '--checkout-accent': checkoutProForm.accentColor }}>
             <div className="previewBadge">{checkoutProForm.brandName || 'Minha marca'}</div>
             <h3>{checkoutProForm.heroTitle || 'Receba com seguranca'}</h3>
-            <p>{checkoutProForm.heroSubtitle || 'Checkout com aprovação instantânea e notificação em tempo real.'}</p>
+            <p>{checkoutProForm.heroSubtitle || 'Checkout com aprovacao instantanea e notificacao em tempo real.'}</p>
             <div className="previewSignals">
               <span className={checkoutProForm.highlightPix ? 'on' : ''}>PIX instantaneo</span>
               <span className={checkoutProForm.showCountdown ? 'on' : ''}>Contador ativo</span>
             </div>
             <div className="previewPaymentRow">
               <button type="button">Pagar agora</button>
-              <small>{checkoutProForm.testimonialText || 'Checkout rápido para aumentar conversão.'}</small>
+              <small>{checkoutProForm.testimonialText || 'Checkout rapido para aumentar conversao.'}</small>
             </div>
             <footer>{checkoutProForm.footerMessage || 'Ambiente criptografado.'}</footer>
           </article>

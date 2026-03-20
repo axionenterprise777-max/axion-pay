@@ -4,13 +4,12 @@ import QRCode from "qrcode";
 import { API_BASE_URL } from "../utils/api.js";
 import { trackEvent } from "../lib/controlPlane.js";
 import "../pages.css";
-import "./styles/CheckoutRevamp.css";
 
 const DEFAULT_PRODUCT = "covid19";
 const PRODUCT_LIBRARY = {
   covid19: {
-    title: "Checkout Comercial AxionPAY",
-    description: "Checkout white-label para clientes do gateway venderem com PIX e cartao.",
+    title: "Plano Premium",
+    description: "Assine nossa plataforma completa e receba pagamentos de forma rapida e segura.",
     price: 249,
     currency: "BRL",
     theme: "white",
@@ -24,14 +23,14 @@ const PRODUCT_LIBRARY = {
       },
       {
         name: "Empresa B",
-        description: "Processamento rápido e aprovação em segundos.",
-        note: "98% de taxa de aprovação"
+        description: "Processamento rapido e aprovacao em segundos.",
+        note: "98% de taxa de aprovacao"
       }
     ]
   }
 };
 
-const TRUST_BADGES = ["Checkout white-label", "Protecao antifraude 24/7", "Repasse comercial rapido"];
+const TRUST_BADGES = ["Processamento seguro", "Protecao antifraude 24/7", "Recebimento rapido"];
 
 const RECEIPT_WHATSAPP_NUMBER = "5511933331462";
 const buildReceiptWhatsAppUrl = (message) =>
@@ -261,9 +260,9 @@ export default function Checkout() {
   );
   const checkoutSteps = useMemo(
     () => [
-      { id: 1, label: "Dados do comprador" },
+      { id: 1, label: "Dados basicos" },
       { id: 2, label: "Pagamento" },
-      { id: 3, label: "Comprovante" }
+      { id: 3, label: "Confirmacao" }
     ],
     []
   );
@@ -526,7 +525,7 @@ export default function Checkout() {
               <span className="checkout-brand-name">{appearance.brandName || "AxionPAY"}</span>
             </div>
           )}
-          <p className="hero-eyebrow">Checkout Comercial Personalizado</p>
+          <p className="hero-eyebrow">Checkout Seguro</p>
           <h1>{config.title}</h1>
           <p className="checkout-description">{config.description}</p>
           <div className="checkout-hero-meta">
@@ -547,7 +546,7 @@ export default function Checkout() {
           </div>
         </div>
         <div className="hero-preview">
-          <p>Fluxo comercial para clientes dos seus clientes com pagamento seguro e experiencia white-label.</p>
+          <p>Revise o resumo e finalize com o metodo de pagamento escolhido.</p>
           <div className="hero-value">
             <strong>{formattedPrice}</strong>
             <small>Preco total</small>
@@ -582,10 +581,10 @@ export default function Checkout() {
                 <h3>
                   {activeStep === 1 && "Coleta de dados"}
                   {activeStep === 2 && "Metodo de pagamento"}
-                  {activeStep === 3 && "Comprovante"}
+                  {activeStep === 3 && "Confirmacao"}
                 </h3>
               </div>
-              <p>Fluxo em etapas para manter conversao alta e reduzir erros de preenchimento.</p>
+              <p>Fluxo em etapas para acelerar a aprovacao e reduzir erros no preenchimento.</p>
             </header>
 
             {activeStep === 1 && (
@@ -636,7 +635,7 @@ export default function Checkout() {
                       className={selectedMethod === "card" ? "method-pill active" : "method-pill"}
                       onClick={() => setSelectedMethod("card")}
                     >
-                      Cartão
+                      Cartao
                     </button>
                   )}
                 </div>
@@ -743,7 +742,7 @@ export default function Checkout() {
                         target="_blank"
                         rel="noreferrer"
                       >
-                        Continuar no checkout do adquirente
+                        Continuar no checkout do provedor
                       </a>
                     )}
                     <a className="ghost-btn" href={receiptUrl} target="_blank" rel="noreferrer">
@@ -755,7 +754,7 @@ export default function Checkout() {
                 <div className="confirmation-box">
                   <h4>Pagamento processado</h4>
                   <p>{paymentStatus?.status || "Revise os detalhes antes de finalizar."}</p>
-                  {receiptTransactionId && <code>ID da transação: {receiptTransactionId}</code>}
+                  {receiptTransactionId && <code>ID da transacao: {receiptTransactionId}</code>}
                 </div>
 
                 <div className="checkout-stage-actions">
@@ -782,7 +781,7 @@ export default function Checkout() {
           </section>
         </div>
         <aside className="preview-shell checkout-summary">
-          <h3>Resumo comercial</h3>
+          <h3>Resumo do pedido</h3>
           <div className="summary-line">
             <span>Produto</span>
             <strong>{config.title}</strong>
@@ -793,7 +792,7 @@ export default function Checkout() {
           </div>
           <div className="summary-line">
             <span>Metodo</span>
-            <strong>{selectedMethod === "pix" ? "PIX" : "Cartão"}</strong>
+            <strong>{selectedMethod === "pix" ? "PIX" : "Cartao"}</strong>
           </div>
           <div className="summary-divider" />
           <div className="summary-line total">
@@ -802,7 +801,7 @@ export default function Checkout() {
           </div>
           <div className="summary-hints">
             <p>Pagamento em ambiente criptografado</p>
-            <p>Checkout pronto para operacao white-label</p>
+            <p>Aprovacao imediata para PIX</p>
           </div>
           {loadingConfig && <p className="panel-hint">Carregando checkout...</p>}
           {fetchError && <p className="panel-error">{fetchError}</p>}

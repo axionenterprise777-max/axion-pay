@@ -1,56 +1,50 @@
-﻿# Axion Pay
+﻿# axion-pay
 
-## Public Snapshot
+## Overview
 
-This repository publishes a public-ready application snapshot focused on runnable source, UI assets, and deploy-safe code only.
+axion-pay is maintained as a production-ready release copy generated from the SANDBOX workspace.
 
-Version tag target: `v1.0.0`
+## Repository role
 
-## Included
+- Bucket: `apps`
+- Project kind: `node-react-app`
+- Release strategy: `github-release-build-artifact`
+- Owner target: `axionenterprise777-max`
+- Notes: Axion Enterprise internal release repository.
 
-- Sanitized source code and public assets.
-- Build metadata needed to understand the project structure.
-- A generated README designed for public handoff.
+## Technology stack
 
-## Excluded
+React, Node.js, npm
 
-- Environment files and secret-bearing configuration.
-- Internal notes, operational documents, and workspace-only reports.
-- Local caches, dependencies, generated build folders, and private backups.
+## Quality gates
 
-## Repository Layout
+- CI workflow: `.github/workflows/ci.yml`
+- Release workflow: `.github/workflows/release.yml`
+- Production hygiene validation: `D:\Projetos\SCRIPTS\verify-production-builds.ps1`
 
-- ``public``
-- ``scripts``
-- ``src``
-- ``webapp``
-- ``.gitattributes``
-- ``.gitignore``
-- ``axionpay_logo.png``
-- ``axionpay_logo.transparent.png``
-- ``package-lock.json``
-- ``package.json``
-- ``vite.config.js``
+## Local setup
 
-## Quick Start
+```bash
+npm install
+```
 
-- ``npm run start:frontend``: vite --config vite.config.js
-- ``npm run start:backend``: node src/index.js
-- ``npm run start``: concurrently "npm run start:frontend" "npm run start:backend"
-- ``npm run dev``: npm run start
-- ``npm run dev:frontend``: npm run start:frontend
-- ``npm run dev:backend``: npm run start:backend
-- ``npm run gen:assets``: node scripts/generate-webapp-public-assets.cjs
-- ``npm run prestart:frontend``: npm run gen:assets
+## Validation and build
 
-## Release Policy
+```bash
+npm run build --if-present
+npm test --if-present
+```
 
-- Public releases are tagged with semantic versioning when package metadata is available.
-- This repository is intended to expose professional, shareable source snapshots without internal workspace context.
+## Release process
 
-## Notes
+1. Develop and validate in `D:\Projetos\SANDBOX`.
+2. Sync the clean release copy into `D:\Projetos\PRODUCTION\apps\axion-pay`.
+3. Run CI and local validation.
+4. Create or update the GitHub repository for this project.
+5. Publish tagged releases through GitHub Actions.
 
-- Generated from the SANDBOX workspace using a sanitization pipeline.
-- Public-facing content was intentionally reduced to avoid leaking internal details.
-- Screenshots already indexed for this project: **17** real captures in the central `portfolio` repository.
+## Source of truth
 
+The development source of truth for this project lives in:
+
+`D:\Projetos\SANDBOX\apps\axion-pay`

@@ -1,10 +1,10 @@
-﻿import { memo } from "react";
+import { memo } from "react";
 import "./CheckoutPreview.css";
 
 const AVAILABLE_FIELDS = ["Nome completo", "Email", "CPF/CNPJ", "Telefone", "Empresa"];
 const AVAILABLE_METHODS = [
   { id: "pix", label: "PIX" },
-  { id: "card", label: "Cartão" }
+  { id: "card", label: "Cart?o" }
 ];
 
 function PaymentConfiguratorModal({
@@ -63,13 +63,13 @@ function PaymentConfiguratorModal({
             </p>
           </div>
           <button type="button" className="modal-close" aria-label="Fechar modal" onClick={onClose}>
-            x
+            ×
           </button>
         </header>
         <div className="checkout-modal-body">
           <form className="checkout-modal-form" onSubmit={onSubmit}>
             <section className="configurator-section">
-              <h4>Métodos aceitos</h4>
+              <h4>M?todos aceitos</h4>
               <div className="config-field-grid">
                 {AVAILABLE_METHODS.map((method) => (
                   <label key={method.id} className="checkbox-row">
@@ -144,10 +144,10 @@ function PaymentConfiguratorModal({
                 </label>
               </div>
               <label>
-                <span>Nivel de risco</span>
+                <span>Nível de risco</span>
                 <select value={riskLevel} onChange={handleChange("riskLevel")}>
                   <option value="low">Baixo</option>
-                  <option value="medium">Medio</option>
+                  <option value="medium">Médio</option>
                   <option value="high">Alto</option>
                   <option value="strict">Strict</option>
                 </select>
@@ -158,7 +158,7 @@ function PaymentConfiguratorModal({
               <textarea
                 value={internalNotes}
                 onChange={handleChange("internalNotes")}
-                placeholder="Defina regras especiais, restricoes operacionais ou observações."
+                placeholder="Defina regras especiais, restrições operacionais ou observações."
               />
             </label>
             <div className="form-actions modal-actions">
@@ -171,7 +171,7 @@ function PaymentConfiguratorModal({
             </div>
           </form>
           <aside className="config-summary-card">
-            <h4>Resumo rapido</h4>
+            <h4>Resumo rápido</h4>
             <ul>
               {summaryItems.map((item) => (
                 <li key={item}>{item}</li>
@@ -185,4 +185,3 @@ function PaymentConfiguratorModal({
 }
 
 export default memo(PaymentConfiguratorModal);
-

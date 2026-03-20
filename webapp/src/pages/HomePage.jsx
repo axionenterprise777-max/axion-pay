@@ -1,17 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+﻿import { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { t } from '../i18n'
 import { getCopy } from '../lib/controlPlane.js'
 import './HomePage.css'
 
 const WHATSAPP_URL =
-  'https://wa.me/5511933331462?text=Ola%2C%20AxionPAY.%20Quero%20ativar%20gateway%20e%20checkout%20comercial.'
+  'https://wa.me/5511933331462?text=Ola%2C%20Axion%20Pay.%20Quero%20falar%20com%20um%20especialista.'
 
 function IconPix() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="iconSvg" aria-hidden="true">
       <path
-        d="M5.3 18.3a3.5 3.5 0 0 0 2.5-1l3.6-3.6a.7.7 0 0 1 .9 0l3.6 3.6a3.5 3.5 0 0 0 2.5 1h.7l-4.5 4.5a3.6 3.6 0 0 1-5.2 0l-4.6-4.5Zm13.1-12.7a3.5 3.5 0 0 0-2.5 1L12.3 10a.7.7 0 0 1-.9 0l-3.6-3.6a3.5 3.5 0 0 0-2.5-1h-.5l4.6-4.5a3.6 3.6 0 0 1 5.2 0l4.5 4.5ZM1.1 9.4l2.7-2.7h1.5a2.5 2.5 0 0 1 1.7.7l3.6 3.6a1.7 1.7 0 0 0 2.4 0l3.6-3.6a2.5 2.5 0 0 1 1.7-.7h1.8l2.7 2.7a3.6 3.6 0 0 1 0 5.2l-2.7 2.7h-1.8a2.5 2.5 0 0 1-1.7-.7l-3.6-3.6a1.8 1.8 0 0 0-2.4 0l-3.6 3.6a2.5 2.5 0 0 1-1.7.7H3.8l-2.7-2.7a3.6 3.6 0 0 1 0-5.2"
+        d="M5.283 18.36a3.505 3.505 0 0 0 2.493-1.032l3.6-3.6a.684.684 0 0 1 .946 0l3.613 3.613a3.504 3.504 0 0 0 2.493 1.032h.71l-4.56 4.56a3.647 3.647 0 0 1-5.156 0L4.85 18.36ZM18.428 5.627a3.505 3.505 0 0 0-2.493 1.032l-3.613 3.614a.67.67 0 0 1-.946 0l-3.6-3.6A3.505 3.505 0 0 0 5.283 5.64h-.434l4.573-4.572a3.646 3.646 0 0 1 5.156 0l4.559 4.559ZM1.068 9.422 3.79 6.699h1.492a2.483 2.483 0 0 1 1.744.722l3.6 3.6a1.73 1.73 0 0 0 2.443 0l3.614-3.613a2.482 2.482 0 0 1 1.744-.723h1.767l2.737 2.737a3.646 3.646 0 0 1 0 5.156l-2.736 2.736h-1.768a2.482 2.482 0 0 1-1.744-.722l-3.613-3.613a1.77 1.77 0 0 0-2.444 0l-3.6 3.6a2.483 2.483 0 0 1-1.744.722H3.791l-2.723-2.723a3.646 3.646 0 0 1 0-5.156"
         fill="currentColor"
       />
     </svg>
@@ -20,7 +20,7 @@ function IconPix() {
 
 function IconCard() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="iconSvg" aria-hidden="true">
       <rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
       <path d="M3 9h18" stroke="currentColor" strokeWidth="1.8" />
       <path d="M7 15h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
@@ -28,20 +28,17 @@ function IconCard() {
   )
 }
 
-function IconSplit() {
+function IconBolt() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M7 4v4m0 8v4M17 4v4m0 8v4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <path d="M7 12h10" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-      <circle cx="7" cy="12" r="2.2" fill="currentColor" />
-      <circle cx="17" cy="12" r="2.2" fill="currentColor" />
+    <svg viewBox="0 0 24 24" className="iconSvg" aria-hidden="true">
+      <path d="m13 2-7 11h5l-1 9 8-12h-5l0-8Z" fill="currentColor" />
     </svg>
   )
 }
 
 function IconShield() {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="iconSvg" aria-hidden="true">
       <path
         d="M12 3 5 6v6.2c0 4.6 3 7.8 7 9.8 4-2 7-5.2 7-9.8V6l-7-3Zm3.5 7.2-4 4a1 1 0 0 1-1.4 0l-1.6-1.6 1.4-1.4 1 1 3.3-3.3 1.3 1.3Z"
         fill="currentColor"
@@ -50,65 +47,25 @@ function IconShield() {
   )
 }
 
-const STATS = [
-  { value: '99.9%', label: 'SLA de uptime' },
-  { value: '15ms', label: 'Latencia media' },
-  { value: '256bit', label: 'Criptografia' },
-]
-
-const FLOW_CARDS = [
-  {
-    icon: <IconPix />,
-    title: 'PIX instantaneo',
-    text: 'Geracao de payload, QR e confirmacao em segundos para venda direta.',
-  },
-  {
-    icon: <IconCard />,
-    title: 'Cartao roteado',
-    text: 'Processamento em cartao com logica de aprovacao e acompanhamento de status.',
-  },
-  {
-    icon: <IconSplit />,
-    title: 'Split comercial',
-    text: 'Distribuicao de valores entre contas para operacoes com subclientes.',
-  },
-  {
-    icon: <IconShield />,
-    title: 'Camada antifraude',
-    text: 'Regras de risco para proteger receita e reduzir chargeback da operacao.',
-  },
-]
-
-const ENDPOINTS = [
-  {
-    method: 'POST',
-    title: 'Criar cobranca PIX',
-    subtitle: 'Pagamento instantaneo com webhook',
-    endpoint: '/api/payments/pix',
-    sample: 'curl /api/payments/pix -H "Content-Type: application/json" -d "{...}"',
-  },
-  {
-    method: 'POST',
-    title: 'Criar cobranca cartao',
-    subtitle: 'Checkout com tokenizacao e retorno de status',
-    endpoint: '/api/payments/card',
-    sample: 'curl /api/payments/card -H "Content-Type: application/json" -d "{...}"',
-  },
-  {
-    method: 'GET',
-    title: 'Consultar transacao',
-    subtitle: 'Status consolidado para operacao e conciliacao',
-    endpoint: '/api/payments/{id}',
-    sample: 'curl /api/payments/trx_01001',
-  },
-]
-
-const LIVE_TX = [
-  { store: 'Loja Orion', amount: 'R$ 189,00', method: 'PIX aprovado' },
-  { store: 'Studio Lux', amount: 'R$ 620,90', method: 'Cartao aprovado' },
-  { store: 'Academia Move', amount: 'R$ 99,00', method: 'PIX aprovado' },
-  { store: 'Ecom Atlas', amount: 'R$ 1.349,00', method: 'Cartao aprovado' },
-]
+function IconCreditCardLarge() {
+  return (
+    <svg viewBox="0 0 260 160" className="creditCardSvg" aria-hidden="true">
+      <defs>
+        <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#22d47d" />
+          <stop offset="55%" stopColor="#0d5f3b" />
+          <stop offset="100%" stopColor="#052a1b" />
+        </linearGradient>
+      </defs>
+      <rect x="6" y="6" width="248" height="148" rx="20" fill="url(#cardGrad)" />
+      <rect x="22" y="30" width="68" height="44" rx="8" fill="rgba(208,255,232,0.22)" />
+      <rect x="22" y="92" width="122" height="12" rx="6" fill="rgba(220,255,238,0.38)" />
+      <rect x="22" y="112" width="90" height="10" rx="5" fill="rgba(220,255,238,0.22)" />
+      <circle cx="206" cy="110" r="20" fill="rgba(255,220,116,0.72)" />
+      <circle cx="186" cy="110" r="20" fill="rgba(255,124,124,0.72)" />
+    </svg>
+  )
+}
 
 function useReveal() {
   useEffect(() => {
@@ -127,7 +84,7 @@ function useReveal() {
           }
         })
       },
-      { threshold: 0.1 },
+      { threshold: 0.08 },
     )
 
     nodes.forEach((node) => observer.observe(node))
@@ -135,164 +92,260 @@ function useReveal() {
   }, [])
 }
 
-function LiveFeed() {
-  const [feed, setFeed] = useState(() => LIVE_TX.slice(0, 3).map((item, idx) => ({ ...item, id: idx + 1 })))
-  const cursor = useRef(3)
-  const seq = useRef(4)
+const features = [
+  {
+    icon: <IconPix />,
+    title: 'Orquestracao inteligente de pagamentos',
+    description: 'PIX, cartao e recorrencia com status unificado para operar com clareza e escala.',
+  },
+  {
+    icon: <IconShield />,
+    title: 'Risco e autorizacao em camadas',
+    description: 'Camadas antifraude e roteamento inteligente para elevar taxa de aprovacao.',
+  },
+  {
+    icon: <IconBolt />,
+    title: 'Checkout orientado a conversao',
+    description: 'Jornada fluida para reduzir abandono e concluir o pagamento mais rapido.',
+  },
+  {
+    icon: <IconCard />,
+    title: 'Stack pronta para devs',
+    description: 'Sandbox imediata, documentacao clara e onboarding tecnico sem atrito.',
+  },
+  {
+    icon: <IconPix />,
+    title: 'Operacao financeira visivel',
+    description: 'Volume, status e repasses em um unico painel para decisao rapida do time.',
+  },
+  {
+    icon: <IconShield />,
+    title: 'Suporte premium de verdade',
+    description: 'Atendimento humano para migracao, estabilidade e escalabilidade continua.',
+  },
+]
+
+const testimonials = [
+  {
+    name: 'CommerceOps',
+    role: 'Head de Pagamentos',
+    text: 'A AxionPAY melhorou nossa aprovacao e deixou o operacional muito mais limpo.',
+  },
+  {
+    name: 'Scale Retail',
+    role: 'VP de Produto',
+    text: 'Integramos rapido, com apoio tecnico forte e visibilidade completa do funil.',
+  },
+  {
+    name: 'SaaS Bridge',
+    role: 'CTO',
+    text: 'Recorrencia e monitoramento em um unico stack reduziram complexidade do time.',
+  },
+]
+
+const paymentNotifications = [
+  { merchant: 'Loja TechPrime', value: 'R$ 289,90', method: 'Pix aprovado em 2s' },
+  { merchant: 'Curso Digital Pro', value: 'R$ 97,00', method: 'Cartao aprovado' },
+  { merchant: 'Market Nova Era', value: 'R$ 1.249,00', method: 'Pix confirmado' },
+  { merchant: 'DropStore Prime', value: 'R$ 178,40', method: 'Pix aprovado em 1s' },
+  { merchant: 'Assinaturas Max', value: 'R$ 59,90', method: 'Cartao aprovado' },
+  { merchant: 'Mundo Suplementos', value: 'R$ 412,10', method: 'Pix confirmado' },
+  { merchant: 'Academia Next', value: 'R$ 129,00', method: 'Cartao aprovado' },
+]
+
+const feeCards = [
+  {
+    method: 'Pix',
+    fee: 'R$ 0,90 + 0,1%',
+    detail: 'Taxa por transacao aprovada no Pix.',
+  },
+  {
+    method: 'Cartao',
+    fee: 'R$ 1,00 + 5%',
+    detail: 'Taxa por transacao aprovada no cartao.',
+  },
+]
+
+export default function HomePage({ controlPayload = {} }) {
+  const navigate = useNavigate()
+  const [liveNotifications, setLiveNotifications] = useState(() =>
+    paymentNotifications.slice(0, 3).map((item, idx) => ({ ...item, id: idx + 1 })),
+  )
+  const notifPointer = useRef(3)
+  const notifId = useRef(4)
+
+  useReveal()
 
   useEffect(() => {
     const timer = window.setInterval(() => {
-      const next = LIVE_TX[cursor.current % LIVE_TX.length]
-      cursor.current += 1
-      setFeed((current) => [{ ...next, id: seq.current++ }, ...current.slice(0, 2)])
+      const nextIndex = notifPointer.current % paymentNotifications.length
+      const next = paymentNotifications[nextIndex]
+      notifPointer.current += 1
+
+      setLiveNotifications((current) => [{ ...next, id: notifId.current++ }, ...current.slice(0, 2)])
     }, 2600)
 
     return () => window.clearInterval(timer)
   }, [])
 
   return (
-    <div className="apLiveFeed" aria-label="Pagamentos ao vivo">
-      {feed.map((item) => (
-        <article key={item.id} className="apLiveCard">
-          <p>{item.method}</p>
-          <strong>{item.store}</strong>
-          <span>{item.amount}</span>
-        </article>
-      ))}
-    </div>
-  )
-}
-
-export default function HomePage({ controlPayload = {} }) {
-  const navigate = useNavigate()
-  useReveal()
-
-  const heroPrimary = useMemo(() => getCopy(controlPayload, 'home-hero', 'cta_primary_label', t('home.ctaPrimary')), [controlPayload])
-
-  return (
-    <div className="apHome">
-      <section className="apHero" data-reveal>
-        <div className="apGlow apGlowOne" aria-hidden="true" />
-        <div className="apGlow apGlowTwo" aria-hidden="true" />
-
-        <div className="apHeroGrid">
-          <div className="apCopy">
-            <div className="apBadgeRow">
-              <span className="apBadge">Pronto para empresas</span>
-              <span className="apVersion">v3.0.0</span>
-            </div>
-
-            <h1>
-              Pagamentos
-              <br />
-              <span>de alto nivel.</span>
-            </h1>
-
-            <p>
-              Gateway AxionPAY com fluxo completo para PIX, cartao e conciliacao em tempo real. Checkout comercial pronto
-              para clientes e subclientes.
+    <div className="homePage">
+      <section className="heroSection" data-reveal>
+        <div className="heroBg" aria-hidden="true" />
+        <div className="heroGlow heroGlowOne" aria-hidden="true" />
+        <div className="heroGlow heroGlowTwo" aria-hidden="true" />
+        <div className="heroSplit">
+          <div className="heroContent">
+            <p className="eyebrow">{getCopy(controlPayload, 'home-hero', 'eyebrow', t('home.eyebrow'))}</p>
+            <h1>Receba no Pix e Cartao sem mensalidade.</h1>
+            <p className="heroSubtitle">
+              Gateway gratuito para vender mais, com checkout rapido e notificacoes em tempo real.
             </p>
-
-            <div className="apActions">
-              <button className="apBtn primary" onClick={() => navigate('/cadastro')}>
-                {heroPrimary}
+            <div className="heroBadges">
+              <span className="heroBadge">Sem taxa mensal</span>
+              <span className="heroBadge">Sem taxa anual</span>
+              <span className="heroBadge">Ativacao imediata</span>
+            </div>
+            <div className="heroActions">
+              <button className="btnModern primary" onClick={() => navigate('/cadastro')}>
+                {getCopy(controlPayload, 'home-hero', 'cta_primary_label', t('home.ctaPrimary'))}
               </button>
-              <button className="apBtn ghost" onClick={() => navigate('/docs')}>
-                Explorar documentacao
+              <button className="btnModern ghost" onClick={() => navigate('/docs')}>
+                {getCopy(controlPayload, 'home-hero', 'cta_secondary_label', t('home.ctaSecondary'))}
               </button>
-              <a className="apBtn ghost" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
-                Falar com comercial
+              <a className="btnModern ghost" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+                {getCopy(controlPayload, 'home-hero', 'cta_tertiary_label', t('home.ctaTertiary'))}
               </a>
             </div>
+            <div className="quickCards">
+              <article className="quickCard">
+                <span className="cardIcon">
+                  <IconBolt />
+                </span>
+                <strong>Vendeu, recebeu</strong>
+                <p>Confirmacao de pagamento em segundos no seu painel.</p>
+              </article>
+              <article className="quickCard">
+                <span className="cardIcon">
+                  <IconCard />
+                </span>
+                <strong>Checkout otimizado</strong>
+                <p>Fluxo simples para reduzir abandono e aumentar conversao.</p>
+              </article>
+            </div>
+          </div>
 
-            <div className="apStats">
-              {STATS.map((item) => (
-                <article key={item.label}>
-                  <strong>{item.value}</strong>
-                  <span>{item.label}</span>
+          <div className="heroVisual" aria-hidden="true">
+            <article className="pixLogoCard">
+              <div className="pixNeon">
+                <img src="/pix-logo-simpleicons.svg" alt="" className="pixLogoAsset" />
+              </div>
+              <p className="pixTitle">Pix com aprovacao instantanea</p>
+              <p className="pixSub">Confirmacao em segundos para acelerar caixa e melhorar a experiencia.</p>
+              <div className="pixOrbit pixOrbitOne" />
+              <div className="pixOrbit pixOrbitTwo" />
+            </article>
+            <article className="cardShowcase">
+              <IconCreditCardLarge />
+              <div className="cardShine" />
+              <div className="cardSpark cardSparkOne" />
+              <div className="cardSpark cardSparkTwo" />
+              <div className="paymentPulseRing" />
+              <div className="paymentTrail" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </div>
+            </article>
+            <div className="paymentFeed">
+              <div className="feedHeader">
+                <span className="liveBadge">Pagamentos ao vivo</span>
+              </div>
+              {liveNotifications.map((item) => (
+                <article key={item.id} className="paymentToast liveToast">
+                  <p className="paymentStatus">
+                    <span className="statusDot" />
+                    {item.method}
+                  </p>
+                  <p className="paymentMerchant">{item.merchant}</p>
+                  <p className="paymentValue">{item.value}</p>
+                  <span className="paymentProgress" />
                 </article>
               ))}
             </div>
           </div>
-
-          <div className="apTerminalWrap" aria-hidden="true">
-            <article className="apTerminal">
-              <header>
-                <div className="apDots">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <p>gateway_query.axionpay</p>
-              </header>
-              <div className="apTerminalBody">
-                <p>
-                  <span>{'>>>'}</span> import axionpay_sdk
-                </p>
-                <p>
-                  <span>{'>>>'}</span> client = AxionPay(API_KEY)
-                </p>
-                <p>
-                  <span>{'>>>'}</span> client.charge({`{ method: 'pix' }`})
-                </p>
-                <p className="apRun">[executando] requisicao enviada...</p>
-                <p>{`{`}</p>
-                <p className="apJson">  "status": "success",</p>
-                <p className="apJson">  "latency": "15ms",</p>
-                <p className="apJson">  "id": "trx_01011"</p>
-                <p>{`}`}</p>
-                <p className="apCursor">_</p>
-              </div>
-            </article>
-            <LiveFeed />
-          </div>
         </div>
       </section>
 
-      <section className="apSection" data-reveal>
-        <header className="apSectionHead">
-          <p>Fluxo de pagamento</p>
-          <h2>Elementos visuais para operacao PIX e cartao em escala.</h2>
-        </header>
-        <div className="apFlowGrid">
-          {FLOW_CARDS.map((item) => (
-            <article key={item.title} className="apFlowCard">
-              <span className="apIcon">{item.icon}</span>
-              <h3>{item.title}</h3>
-              <p>{item.text}</p>
+      <section className="pricingSection" data-reveal>
+        <div className="sectionHead">
+          <h2>Taxas claras para crescer sem surpresa</h2>
+          <p className="sectionSub">Gateway gratuito: sem mensalidade e sem anuidade. Voce paga so quando vender.</p>
+        </div>
+        <div className="pricingGrid">
+          <article className="pricingCard featured">
+            <p className="planBadge">Gateway gratuito</p>
+            <p className="planName">Sem mensalidade ou anuidade</p>
+            <p className="price">R$ 0,00</p>
+            <ul>
+              <li>Sem custo de ativacao</li>
+              <li>Sem taxa fixa mensal</li>
+              <li>Sem taxa anual</li>
+            </ul>
+          </article>
+          {feeCards.map((item) => (
+            <article key={item.method} className="pricingCard">
+              <span className="cardIcon">{item.method === 'Pix' ? <IconPix /> : <IconCard />}</span>
+              <p className="planName">{item.method}</p>
+              <p className="price">{item.fee}</p>
+              <p className="feeDetail">{item.detail}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="apSection apEndpoint" data-reveal>
-        <header className="apSectionHead apEndpointHead">
-          <div>
-            <p>API interna</p>
-            <h2>Endpoints prontos para producao</h2>
-            <small>Use x-api-key e payload JSON para integrar checkout e pagamento.</small>
-          </div>
-          <aside className="apKeyBox">
-            <p>x-api-key</p>
-            <strong>SEU_TOKEN_PUBLICO</strong>
-            <span>Rate limit publico: 120 req/min</span>
-          </aside>
-        </header>
+      <section className="featuresSection">
+        <div className="sectionHead" data-reveal>
+          <h2>Motivos para migrar seu gateway para a Axion Pay</h2>
+          <p className="sectionSub">Tecnologia, design e operacao financeira pensados para vender mais todos os dias.</p>
+        </div>
+        <div className="featuresGrid">
+          {features.map((feature) => (
+            <article key={feature.title} className="featureCard" data-reveal>
+              <span className="cardIcon">{feature.icon}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-        <div className="apEndpointGrid">
-          {ENDPOINTS.map((item) => (
-            <article key={item.title} className="apEndpointCard">
-              <p className="apMethod">
-                <span>{item.method}</span> {item.subtitle}
-              </p>
-              <h3>{item.title}</h3>
-              <code>{item.endpoint}</code>
-                <p className="apSample">{item.sample}</p>
-                <button className="apInlineLink" onClick={() => navigate('/docs')}>
-                  Usar agora {'->'}
-                </button>
-              </article>
-            ))}
+      <section className="testimonialsSection">
+        <div className="sectionHead" data-reveal>
+          <h2>Times que exigiam confiabilidade, velocidade e resultado</h2>
+        </div>
+        <div className="testimonialsGrid">
+          {testimonials.map((item) => (
+            <article key={item.name} className="testimonialCard" data-reveal>
+              <p className="quote">"{item.text}"</p>
+              <div className="author">
+                <strong>{item.name}</strong>
+                <span className="authorRole">{item.role}</span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="ctaBottomSection" data-reveal>
+        <h2>Ative hoje e cobre via Pix e Cartao em minutos.</h2>
+        <div className="heroActions">
+          <button className="btnModern primary" onClick={() => navigate('/cadastro')}>
+            Criar conta gratuita
+          </button>
+          <a className="btnModern ghost" href={WHATSAPP_URL} target="_blank" rel="noreferrer">
+            Falar com especialista
+          </a>
         </div>
       </section>
     </div>

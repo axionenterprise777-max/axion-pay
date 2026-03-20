@@ -87,19 +87,7 @@ export default function Cadastro({ controlPayload = {} }) {
         <div className="authInfo">
           <p className="eyebrow">Sandbox imediata</p>
           <h1>{getCopy(controlPayload, 'auth-signup', 'title', t('auth.signupTitle'))}</h1>
-          <p>
-            {getCopy(
-              controlPayload,
-              'auth-signup',
-              'subtitle',
-              'Crie um workspace de testes, gere pay-tags e valide seu fluxo de checkout antes do go-live.',
-            )}
-          </p>
-          <div className="authFeatureList" aria-hidden="true">
-            <span>Chave API instantanea</span>
-            <span>Ambiente de homologacao</span>
-            <span>Checkout pronto para teste</span>
-          </div>
+          <p>{getCopy(controlPayload, 'auth-signup', 'subtitle', 'Crie um workspace de testes, gere pay-tags e valide seu fluxo de checkout antes do go-live.')}</p>
         </div>
 
         <form className="authForm" onSubmit={handleSubmit}>

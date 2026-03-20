@@ -58,19 +58,7 @@ export default function Login({ controlPayload = {} }) {
         <div className="authInfo">
           <p className="eyebrow">Acesso seguro</p>
           <h1>{getCopy(controlPayload, 'auth-login', 'title', t('auth.loginTitle'))}</h1>
-          <p>
-            {getCopy(
-              controlPayload,
-              'auth-login',
-              'subtitle',
-              'Entre para acompanhar transacoes, status de risco, pay-tags e configuracoes da operacao.',
-            )}
-          </p>
-          <div className="authFeatureList" aria-hidden="true">
-            <span>Dashboard em tempo real</span>
-            <span>Fluxo PIX e cartao</span>
-            <span>Operacao protegida</span>
-          </div>
+          <p>{getCopy(controlPayload, 'auth-login', 'subtitle', 'Entre para acompanhar transacoes, status de risco, pay-tags e configuracoes de operacao.')}</p>
         </div>
         <form className="authForm" onSubmit={handleSubmit}>
           <label>

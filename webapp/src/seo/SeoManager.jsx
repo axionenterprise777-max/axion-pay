@@ -6,60 +6,62 @@ const ROUTE_META = [
   {
     match: (path) => path === "/",
     meta: {
-      title: "AxionPAY | Gateway comercial com checkout white-label",
-      description: "Plataforma AxionPAY para operar gateway, SDK e checkout comercial personalizado para clientes dos seus clientes.",
-      keywords: "gateway, checkout white-label, sdk pagamentos, pix, cartao, api"
+      title: "AxionPAY | Pagamentos instantâneos",
+      description: "Plataforma brasileira para receber PIX, cartões e assinaturas com pay-tags inteligentes e relatórios em tempo real.",
+      keywords: "pagamentos, pix, cartão, assinaturas, dashboard, pay-tags"
     }
   },
   {
     match: (path) => path.startsWith("/products"),
     meta: {
-      title: "AxionPAY | Produtos e APIs avancadas",
-      description: "Integracoes modernas de split, antifraude e recorrencia para squads que precisam de controle total sobre recebimentos."
+      title: "AxionPAY | Produtos e APIs avançadas",
+      description: "Integracoes modernas de split, antifraude e recorrencia para squads que precisam de controle total sobre o fluxo de recebimentos."
     }
   },
   {
     match: (path) => path.startsWith("/dashboard"),
     meta: {
       title: "AxionPAY | Painel do cliente",
-      description: "Painel operacional com acesso a pay-tags, repasses e suporte com visibilidade de ponta a ponta."
+      description: "Painel operacional com acesso a pay-tags, repasses e suporte, conspirando com o banco central em tempo real."
     }
   },
   {
     match: (path) => path === "/support",
     meta: {
-      title: "AxionPAY | Suporte e atendimento",
-      description: "Central de atendimento AxionPAY com chat, WhatsApp e tickets para operacoes comerciais."
+      title: "AxionPAY | Suporte e documentação",
+      description: "Central de atendimento AxionPAY, com chat, WhatsApp e tickets para squads que precisam manter a operação no ar."
     }
   },
   {
     match: (path) => path === "/status",
     meta: {
       title: "AxionPAY | Status da API",
-      description: "Status de disponibilidade, latencia e indicadores de saude dos servicos AxionPAY."
+      description: "Relatório vivo do banco de pagamentos, latência e disponibilidade dos serviços AxionPAY."
     }
   },
   {
     match: (path) => path === "/pay-tags",
     meta: {
       title: "AxionPAY | Pay-tags inteligentes",
-      description: "Crie e monitore canais dedicados com pay-tags exclusivas, roteamento seguro e tracking granular."
+      description: "Crie e monitore canais dedicados com pay-tags exclusivas, roteamento seguro e tracking granular de recebimentos."
     }
   },
   {
     match: (path) => path === "/docs",
     meta: {
-      title: "AxionPAY | SDK e documentacao oficial",
-      description: "Guia tecnico com SDK AxionPAY, API REST, webhooks e fluxo comercial para checkout white-label.",
-      keywords: "sdk axionpay, documentacao api, webhook, checkout comercial"
+      title: "AxionPAY | Documentação oficial",
+      description:
+        "Guias, contratos OpenAPI e exemplos prontos para integrar PIX, cartões e antifraude através do AxionPAY.",
+      keywords: "documentação, API, pay-tags, PIX, cartão, antifraude"
     }
   },
   {
     match: (path) => path.startsWith("/checkout"),
     meta: {
-      title: "AxionPAY | Checkout comercial personalizado",
-      description: "Publique /checkout/{slug} com identidade do cliente, modos black/white, PIX e cartao para operacoes comerciais.",
-      keywords: "checkout white-label, pix, cartao, operacao comercial"
+      title: "AxionPAY | Checkout configurável",
+      description:
+        "Monte páginas /checkout/{slug} com temas black/white, provas sociais e métodos aceitos para vender em qualquer canal.",
+      keywords: "checkout, pagamentos, PIX, cartão, provas sociais"
     }
   }
 ];
@@ -81,9 +83,7 @@ export default function SeoManager() {
 
   const canonicalUrl = `${baseUrl}${location.pathname}`;
   const schemaDescription =
-    routeMeta.description ||
-    "Receba, monitore e reconcilie pagamentos com o AxionPAY, gateway brasileiro focado em PIX, cartao e checkout white-label.";
-
+    routeMeta.description || "Receba, monitore e reconcilie pagamentos instantâneos com o AxionPAY, o gateway brasileiro focado em PIX, cartões e antifraude.";
   const schemaData = useMemo(
     () => ({
       "@context": "https://schema.org",
